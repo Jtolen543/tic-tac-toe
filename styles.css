@@ -1,0 +1,145 @@
+body {
+    margin: auto;
+    font-family: Arial;
+}
+
+.score-header {
+    background-color: rgb(46, 170, 133);
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: max(3rem, 4.2vw);
+    display: flex;
+    justify-content: space-between;
+}
+
+.score-header > *{
+    padding: 25px;
+}
+
+.player-one-header, .player-two-header {
+    transition: .3s;
+}
+
+#player-move {
+    background-color: rgb(118, 201, 176);
+    border-radius: 5px;
+    border-bottom: 25px solid white;
+}
+#player-no-move {
+    background-color: rgb(46, 170, 133);
+    border-radius: 5px;
+    border-bottom: 25px solid rgb(46, 170, 133);
+}
+
+.player-one-header img{
+    height: 8vh;
+    width: 8vw;
+    vertical-align: middle;
+}
+.player-two-header img {
+    height: 8.5vh;
+    width: 8.5vw;
+    vertical-align: middle;
+}
+
+.game-body {
+    background-color: rgb(97, 212, 164);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px; 
+}
+
+.reset-game-button {
+    width: 160px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: rgb(62, 167, 123);
+    border-style: none;
+    font-size: 2.2rem;
+    cursor: pointer;
+}
+
+.reset-game-button:hover {
+    transition: .3s;
+    background-color: rgb(93, 190, 150);
+}
+
+.game-board {
+    width: max(500px,45%);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 25vh);
+}
+
+
+.big-cell {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    border-right: .25rem solid rgb(29, 136, 104);
+    border-bottom: .25rem solid rgb(29, 136, 104);
+    padding: .75rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.big-cell:nth-child(3n) {
+    border-right: none;
+}
+
+.big-cell:nth-last-child(-n+3) {
+    border-bottom: none;
+}
+
+.small-cell {
+    border-right: .25rem solid rgb(29, 136, 104);
+    border-bottom: .25rem solid rgb(29, 136, 104);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.small-cell:nth-child(3n) {
+    border-right: none;
+}
+
+.small-cell:nth-last-child(-n + 3) {
+    border-bottom: none;
+}
+
+.small-cell-img {
+    width: 3.5vw;
+    height: 3.5vh;
+}
+
+.big-cell-img {
+    width: 11vw;
+    height: 11vh;
+    grid-row: 1 / 4;
+    grid-column: 1 / 4;
+}
+
+.video-info {
+    background-color: rgb(55, 124, 95);
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.description-container {
+    display: flex;
+    font-size: 1.4rem;
+    color: white;
+    font-weight: bold;
+    flex-direction: column;
+    gap: 15px;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
