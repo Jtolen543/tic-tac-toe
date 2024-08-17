@@ -111,9 +111,11 @@ body {
     border-bottom: none;
 }
 
+
 .small-cell-img {
-    width: 3.5vw;
     height: 3.5vh;
+    width: 3.5vw;
+    animation: zoom-in-zoom-out .7s ease;
 }
 
 .big-cell-img {
@@ -121,7 +123,37 @@ body {
     height: 11vh;
     grid-row: 1 / 4;
     grid-column: 1 / 4;
+    animation: zoom-in-zoom-out .7s ease;
 }
+
+#winning-cells {
+    animation: solved-zoom-in-zoom-out .7s ease;
+}
+
+@keyframes zoom-in-zoom-out {
+    0% {
+        transform: scale(0,0);
+    }
+    50% {
+        transform: scale(1.25,1.25);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+@keyframes solved-zoom-in-zoom-out {
+    0% {
+        transform: scale(1,1);
+    }
+    50% {
+        transform: scale(1.5,1.5);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
 
 .video-info {
     background-color: rgb(55, 124, 95);
@@ -141,5 +173,6 @@ body {
     width: 50%;
     align-items: center;
     justify-content: center;
+    
 }
 
