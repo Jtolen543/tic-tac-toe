@@ -85,6 +85,7 @@ body {
     padding: .75rem;
     padding-right: 1.5rem;
     padding-left: 1.5rem;
+    transition: .4s;
 }
 
 .big-cell:nth-child(3n) {
@@ -111,6 +112,9 @@ body {
     border-bottom: none;
 }
 
+#selected {
+    background-color: rgb(148, 245, 204);
+}
 
 .small-cell-img {
     height: 3.5vh;
@@ -127,7 +131,16 @@ body {
 }
 
 #winning-cells {
-    animation: solved-zoom-in-zoom-out .7s ease;
+    animation: solved-zoom-in-zoom-out .9s ease;
+}
+
+#winning-game {
+    animation: solved-zoom-in-zoom-out .9s ease;
+}
+
+#shrink-cell {
+    transition: .6s;
+    transform: scale(0, 0);
 }
 
 @keyframes zoom-in-zoom-out {
@@ -146,6 +159,9 @@ body {
     0% {
         transform: scale(1,1);
     }
+    25% {
+        transform: scale(.85, .85);
+    }
     50% {
         transform: scale(1.5,1.5);
     }
@@ -153,7 +169,6 @@ body {
         transform: scale(1, 1);
     }
 }
-
 
 .video-info {
     background-color: rgb(55, 124, 95);
@@ -175,4 +190,3 @@ body {
     justify-content: center;
     
 }
-
