@@ -67,8 +67,7 @@ function AddClickToCells() {
         small_cells.forEach((item, smallIndex) => {
             item.addEventListener("click", () => {
                 console.log(item)
-                if (element.classList.contains("clickable")) {
-                    addMark(determineTurn(), item)
+                if (element.classList.contains("clickable") && addMark(determineTurn(), item)) {
                     updateBoard(bigIndex, smallIndex, determineTurn().sign);
                     let condition = checkSmallBoard(Math.floor(bigIndex / 3), bigIndex % 3);
                     convertSmallToBig(condition, Math.floor(bigIndex / 3), bigIndex % 3);
