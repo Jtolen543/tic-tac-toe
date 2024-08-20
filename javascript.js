@@ -20,7 +20,7 @@ function createGameBoard() {
         big_cell.classList.add("clickable")
         for (let j = 1; j <= 9; j++) {
             const cell = document.createElement("div")
-            cell.classList.add(cell-${j})
+            cell.classList.add(`cell-${j}`)
             cell.classList.add("small-cell")
             cell.id = "-"
             big_cell.appendChild(cell)
