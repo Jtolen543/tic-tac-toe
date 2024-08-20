@@ -9,8 +9,6 @@ let gamelayout = Array.from({length: 3}, () =>
     )
 );
 
-
-
 function createGameBoard() {
     document.querySelector(".game-title").textContent = "Super Tic-Tac-Toe"
     const board = document.createElement("div")
@@ -19,14 +17,13 @@ function createGameBoard() {
         const big_cell = document.createElement("div")
         big_cell.classList.add(game-${i})
         big_cell.classList.add("big-cell")
-        big_cell.classList.add('clickable')
+        big_cell.classList.add("clickable")
         for (let j = 1; j <= 9; j++) {
             const cell = document.createElement("div")
             cell.classList.add(cell-${j})
             cell.classList.add("small-cell")
             cell.id = "-"
             big_cell.appendChild(cell)
-
         }
         board.appendChild(big_cell)
     }
