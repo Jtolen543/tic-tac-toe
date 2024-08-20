@@ -15,7 +15,7 @@ function createGameBoard() {
     board.classList.add("game-board")
     for (let i = 1; i <= 9; i++) {
         const big_cell = document.createElement("div")
-        big_cell.classList.add(game-${i})
+        big_cell.classList.add(`game-${i}`)
         big_cell.classList.add("big-cell")
         big_cell.classList.add("clickable")
         for (let j = 1; j <= 9; j++) {
