@@ -17,12 +17,12 @@ function createGameBoard() {
     board.classList.add("game-board")
     for (let i = 1; i <= 9; i++) {
         const big_cell = document.createElement("div")
-        big_cell.classList.add(`game-${i}`)
+        big_cell.classList.add(game-${i})
         big_cell.classList.add("big-cell")
         big_cell.classList.add('clickable')
         for (let j = 1; j <= 9; j++) {
             const cell = document.createElement("div")
-            cell.classList.add(`cell-${j}`)
+            cell.classList.add(cell-${j})
             cell.classList.add("small-cell")
             cell.id = "-"
             big_cell.appendChild(cell)
@@ -37,6 +37,7 @@ function createGameBoard() {
         game_container.innerHTML = ""
         createGameBoard()
         AddClickToCells()
+        gamelayout = []
         gamelayout = Array.from({length: 3}, () =>
             Array.from({length: 3}, () =>
                 Array.from({length: 3}, ()=> 
@@ -68,6 +69,7 @@ function AddClickToCells() {
             item.addEventListener("click", () => {
                 console.log(item)
                 if (element.classList.contains("clickable") && addMark(determineTurn(), item)) {
+                    addMark(determineTurn(), item)
                     updateBoard(bigIndex, smallIndex, determineTurn().sign);
                     let condition = checkSmallBoard(Math.floor(bigIndex / 3), bigIndex % 3);
                     convertSmallToBig(condition, Math.floor(bigIndex / 3), bigIndex % 3);
@@ -75,35 +77,36 @@ function AddClickToCells() {
                     player_1.turn = !player_1.turn;
                     player_2.turn = !player_2.turn;
                     swapHighlight();
-                    determineIfClickable(smallIndex); // Set clickable cells based on the position of the clicked cell
+                    console.log(condition)
+                    determineIfClickable(smallIndex, condition); // Set clickable cells based on the position of the clicked cell
                 }
             });
         });
     });
 }
 
-function determineIfClickable(position) {
+function determineIfClickable(position, stuff) {
     let currentBigCellIndex = position
     console.log(currentBigCellIndex)
     let ffa = false
     const bigCells = document.querySelectorAll(".big-cell");
     bigCells.forEach((cell, index) => {
         if (index === currentBigCellIndex) {
-            if (!cell.classList.contains("solved")) {
+            if (!cell.classList.contains("solved") && stuff === null) {
                 cell.classList.add("clickable")
                 cell.id = "selected"
             }
             else ffa = true
         }
-        else{
+        else {
             cell.classList.remove("clickable")
             cell.id = ""
         }
     });
     if (ffa) {
         bigCells.forEach((element) =>{
-            console.log("test")
             element.classList.add("clickable")
+            element.id = ""
         })
     }
 }
@@ -146,13 +149,13 @@ function checkBigBoard() {
         setTimeout(function() {animateWinningRow(user.cells)}, 2500)
         let game_title = document.querySelector(".game-title")
         if (user.winner === "X") {
-            game_title.textContent = `${player_1.name} Wins!`
+            game_title.textContent = ${player_1.name} Wins!
             player_1.turn = false
             player_2.turn = true
             player_1.wins += 1
         }
         else {
-            game_title.textContent = `${player_2.name} Wins!`
+            game_title.textContent = ${player_2.name} Wins!
             player_2.turn = false
             player_1.turn = true
             player_2.wins += 1
@@ -177,7 +180,7 @@ function animateWinningRow(array, game_loc = 0) {
         let i = 0
         array.forEach((number) => {
             let cell_index = number[0] * 3 + number[1] + 1
-            let element = document.querySelector(`.game-${cell_index} img`)
+            let element = document.querySelector(.game-${cell_index} img)
             setTimeout(function() {
                 element.id = "winning-game"
             }, 100 + i++ * 75)
@@ -187,10 +190,11 @@ function animateWinningRow(array, game_loc = 0) {
     let elements = []
     array.forEach((number, index) => {
         let cell_index = number[0] * 3 + number[1] + 1
-        let element = document.querySelector(`.game-${game_loc} .cell-${cell_index} img`)
+        let element = document.querySelector(.game-${game_loc} .cell-${cell_index} img)
         setTimeout(function() {
             element.id = "winning-cells"
         }, 100 + index * 75)
+        element.id = ""
         elements.push(element)
     })
     return elements[2]
@@ -198,16 +202,16 @@ function animateWinningRow(array, game_loc = 0) {
 }
 
 function convertSmallToBig(winner, bigRow, bigCol) {
-    if (winner === null) return
+    if (winner === null) return 
     let dom_elements = winner.cells
     let imagery = winner.winner
     if (imagery === "X" || imagery === "O") {
         gamelayout[bigRow][bigCol] = imagery
         let game_location = bigRow * 3 + bigCol + 1
         let element = animateWinningRow(dom_elements, game_location)
-        const game_dom = document.querySelector(`.game-${game_location}`)
+        const game_dom = document.querySelector(.game-${game_location})
         element.addEventListener("animationend", () => {
-            let small_game = document.querySelectorAll(`.game-${game_location} .small-cell`)
+            let small_game = document.querySelectorAll(.game-${game_location} .small-cell)
             small_game.forEach((element) => {element.id="shrink-cell"})            
             setTimeout(function() {
                 game_dom.id = ""
@@ -221,7 +225,7 @@ function convertSmallToBig(winner, bigRow, bigCol) {
             }, 700)
         }, false)
     }
-    else return
+    else return 
 }
 
 
