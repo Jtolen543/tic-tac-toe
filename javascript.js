@@ -146,13 +146,13 @@ function checkBigBoard() {
         setTimeout(function() {animateWinningRow(user.cells)}, 2500)
         let game_title = document.querySelector(".game-title")
         if (user.winner === "X") {
-            game_title.textContent = ${player_1.name} Wins!
+            game_title.textContent = `${player_1.name} Wins!`
             player_1.turn = false
             player_2.turn = true
             player_1.wins += 1
         }
         else {
-            game_title.textContent = ${player_2.name} Wins!
+            game_title.textContent = `${player_2.name} Wins!`
             player_2.turn = false
             player_1.turn = true
             player_2.wins += 1
@@ -177,7 +177,7 @@ function animateWinningRow(array, game_loc = 0) {
         let i = 0
         array.forEach((number) => {
             let cell_index = number[0] * 3 + number[1] + 1
-            let element = document.querySelector(.game-${cell_index} img)
+            let element = document.querySelector(`.game-${cell_index} img`)
             setTimeout(function() {
                 element.id = "winning-game"
             }, 100 + i++ * 75)
@@ -187,7 +187,7 @@ function animateWinningRow(array, game_loc = 0) {
     let elements = []
     array.forEach((number, index) => {
         let cell_index = number[0] * 3 + number[1] + 1
-        let element = document.querySelector(.game-${game_loc} .cell-${cell_index} img)
+        let element = document.querySelector(`.game-${game_loc} .cell-${cell_index} img`)
         setTimeout(function() {
             element.id = "winning-cells"
         }, 100 + index * 75)
@@ -206,9 +206,9 @@ function convertSmallToBig(winner, bigRow, bigCol) {
         gamelayout[bigRow][bigCol] = imagery
         let game_location = bigRow * 3 + bigCol + 1
         let element = animateWinningRow(dom_elements, game_location)
-        const game_dom = document.querySelector(.game-${game_location})
+        const game_dom = document.querySelector(`.game-${game_location}`)
         element.addEventListener("animationend", () => {
-            let small_game = document.querySelectorAll(.game-${game_location} .small-cell)
+            let small_game = document.querySelectorAll(`.game-${game_location} .small-cell`)
             small_game.forEach((element) => {element.id="shrink-cell"})            
             setTimeout(function() {
                 game_dom.id = ""
